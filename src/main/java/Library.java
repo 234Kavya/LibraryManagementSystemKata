@@ -35,4 +35,11 @@ public class Library {
         }
         return false; // Book was not borrowed or does not exist
     }
+
+    //View all available books
+    public List<Book> viewAvailableBooks() {
+        return books.stream()
+                .filter(Book::isAvailable) // Filter only available books
+                .collect(Collectors.toList());
+    }
 }
