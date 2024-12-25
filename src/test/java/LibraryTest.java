@@ -7,4 +7,12 @@ public class LibraryTest {
         Library library = new Library();
         assertEquals(0, library.getBooksCount());
     }
+
+    @Test
+    public void testAddBook() {
+        Library library = new Library();
+        Book book = new Book("1234567890", "Atomic Habits", "James Clear ", 2018);
+        library.addBook(book);  // Add the book to the library
+        assertEquals(1, library.getBooksCount());  // Check the count of books in the library
+    }
 }
