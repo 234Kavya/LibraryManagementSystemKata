@@ -27,4 +27,14 @@ public class LibraryTest {
         assertTrue(borrowed);  // Check if borrowing was successful
         assertFalse(book.isAvailable());  // The book should now be unavailable
     }
+    @Test
+    public void testReturnBook() {
+        Library library = new Library();
+        Book book = new Book("1234567890", "Atomic Habits", "James Clear ", 2018);
+        library.addBook(book);
+        library.borrowBook("1234567890");
+        boolean returned = library.returnBook("1234567890"); // Return the book by ISBN
+        assertTrue(returned);  // Check if returning was successful
+        assertTrue(book.isAvailable());  // The book should be available again
+    }
 }

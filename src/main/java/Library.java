@@ -15,4 +15,14 @@ public class Library {
     public void addBook(Book book) {
         books.add(book);
     }
+    // Borrow book with isbn
+    public boolean borrowBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn) && book.isAvailable()) {
+                book.setAvailable(false); // Mark the book as unavailable
+                return true; // Borrowing successful
+            }
+        }
+        return false; // Book not available or does not exist
+    }
 }
