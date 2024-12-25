@@ -37,4 +37,18 @@ public class LibraryTest {
         assertTrue(returned);  // Check if returning was successful
         assertTrue(book.isAvailable());  // The book should be available again
     }
+
+    @Test
+    public void testViewAvailableBooks() {
+        Library library = new Library();
+        Book book1 = new Book("1111111111", "Programming in ANSI C", "E. Balagurusamy", 1998);
+        Book book2 = new Book("2222222222", "Black Book", "Steven Holzner", 2000);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.borrowBook("1111111111"); // Borrow the first book
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertEquals(1, availableBooks.size()); // Only one book should be available
+        assertEquals("2222222222", availableBooks.get(0).getIsbn()); // The available book's ISBN should match
+    }
+
 }
